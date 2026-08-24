@@ -214,7 +214,6 @@
       justify-content: center;
     }
 
-    /* Organic curved blob matching the reference */
     .hero-image-blob {
       width: 440px;
       height: 440px;
@@ -468,6 +467,16 @@
       color: var(--text-muted);
     }
 
+    .contact-details a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-details a:hover {
+      color: var(--primary-blue);
+    }
+
     .contact-details i {
       color: var(--primary-blue);
       margin-top: 4px;
@@ -492,12 +501,18 @@
     }
 
     .form-group select,
-    .form-group input {
+    .form-group input,
+    .form-group textarea {
       width: 100%;
       padding: 0.75rem 1rem;
       border: 1px solid var(--border-color);
       border-radius: 6px;
       font-family: inherit;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
     }
 
     .form-agreement {
@@ -661,7 +676,7 @@
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-content">
-      <span class="hero-tag"> Solvex Solutions Inc</span>
+      <span class="hero-tag">Solvex Solutions Inc</span>
       <h1 class="hero-title">Technology & IT<br>Solutions</h1>
       <p class="hero-description">
         In today’s fast-paced digital era, robust Technology and IT Solutions are critical for driving innovation, enhancing efficiency, and maintaining a competitive edge. At Solvex Solutions Inc, we specialize in delivering tailored solutions designed to meet the unique needs of businesses across industries.
@@ -835,36 +850,45 @@
         <div class="contact-details">
           <div>
             <i class="fa-solid fa-phone"></i>
-            <span>+1(773)-739-1127</span>
+            <a href="tel:+17737391127">+1(773)-739-1127</a>
           </div>
           <div>
             <i class="fa-solid fa-location-dot"></i>
-            <span>8161 Niles center Rd , Skokie , Il 60077</span>
+            <span>8161 Niles Center Rd, Skokie, IL 60077</span>
           </div>
           <div>
             <i class="fa-solid fa-envelope"></i>
-            <span>contracts@Solvex.com</span>
+            <a href="mailto:contracts@solvexsol.in">contracts@solvexsol.in</a>
           </div>
         </div>
       </div>
 
-      <form class="quote-form">
+      <!-- Integrated with FormSubmit endpoint for direct email delivery -->
+      <form class="quote-form" action="https://formsubmit.co/contracts@solvexsol.in" method="POST">
+        <!-- Optional FormSubmit configurations -->
+        <input type="hidden" name="_subject" value="New Quote Request - Solvex Solutions Inc" />
+        <input type="hidden" name="_captcha" value="false" />
+        
         <div class="form-group">
           <label for="inquiry">Your inquiry about</label>
-          <select id="inquiry">
-            <option value="1">IT Consultation</option>
-            <option value="2">Cloud Solutions</option>
-            <option value="3">Cyber Security</option>
-            <option value="4">Software Development</option>
+          <select id="inquiry" name="Inquiry_Type">
+            <option value="IT Consultation">IT Consultation</option>
+            <option value="Cloud Solutions">Cloud Solutions</option>
+            <option value="Cyber Security">Cyber Security</option>
+            <option value="Software Development">Software Development</option>
           </select>
         </div>
         <div class="form-group">
           <label for="name">Your Name</label>
-          <input type="text" id="name" placeholder="John Doe" required />
+          <input type="text" id="name" name="Name" placeholder="John Doe" required />
         </div>
         <div class="form-group">
           <label for="email">Your Email</label>
-          <input type="email" id="email" placeholder="john@example.com" required />
+          <input type="email" id="email" name="Email" placeholder="john@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message (Optional)</label>
+          <textarea id="message" name="Message" placeholder="Tell us about your project or requirements..."></textarea>
         </div>
         <div class="form-agreement">
           <input type="checkbox" id="terms" required />
